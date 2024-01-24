@@ -32,7 +32,16 @@ render(); // We call this function once to render the initial state
  * The term "render" is often used to describe this process.
  */
 
-//function which calculates the average of all freelancer prices
+
+//Function to calculate average price of all freelancers
+function averagePrice(){
+  const sum = freelancers.reduce((total, current) => {
+    return total + current.price;}, 0);
+    // console.log("Sum",sum);
+    const average = sum / freelancers.length;
+    // console.log("average: ",average);
+    return average;
+};
 
 //render function
 function render() {
@@ -49,7 +58,7 @@ function render() {
       freelancers.forEach((freelancer) => {
         //creates a new table row
         const tableRow = document.createElement("tr");
-        //add td child element to the tr created
+        //add td child element to the created tr
         const tdName = document.createElement("td");
         tdName.textContent = freelancer.name;
     
@@ -59,13 +68,18 @@ function render() {
         const tdPrice = document.createElement("td");
         tdPrice.classList.add("price");
         tdPrice.textContent = `$${freelancer.price}`;
-    
+        //add all created td to the tr
         tableRow.appendChild(tdName);
         tableRow.appendChild(tdOccupation);
         tableRow.appendChild(tdPrice);
     
         freelancerId.appendChild(tableRow);
+
+        const average = document.querySelector("#average");
+        average.innerHTML = `The average starting price is: $${averagePrice().toFixed()}`;
       });
+
+
     };
 
 
@@ -91,3 +105,4 @@ function createFreelancer() {
     clearInterval(addFreelancerIntervalId);
   }
 }
+
