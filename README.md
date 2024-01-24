@@ -13,11 +13,11 @@ Here, we define variables representing the state of our program:
 
 ## Example Usage
 
-javascript
+```javascript
 const newFreelancer = createFreelancer();
 console.log(newFreelancer);
 console.log(freelancers);
-
+```
 ## Interval for Adding Freelancers
 The program uses setInterval to call createFreelancer every 1000 milliseconds (1 second). The interval can be stopped using clearInterval(addFreelancerIntervalId).
 
